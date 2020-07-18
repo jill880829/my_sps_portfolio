@@ -26,3 +26,36 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+// week2-step2 practice js fetch function 
+function getGreetingUsingArrowFunctions() {
+  fetch('/data').then(response => response.text()).then((greeting) => {
+    document.getElementById('greeting-container').innerText = greeting;
+  });
+}
+
+// week2-step3 add json
+function getServerStats() {
+  console.log("Jill~~~ <3");
+  fetch('/data').then(response => response.json()).then((stats) => {
+    // stats is an object, not a string, so we have to
+    // reference its fields to create HTML content
+    console.log(stats);
+
+    const statsListElement = document.getElementById('greeting-container');
+    statsListElement.innerHTML = '';
+    statsListElement.appendChild(
+        createListElement(stats[0]));
+    statsListElement.appendChild(
+        createListElement(stats[1]));
+    statsListElement.appendChild(
+        createListElement(stats[2]));
+  });
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}

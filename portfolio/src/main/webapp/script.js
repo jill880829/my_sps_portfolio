@@ -66,7 +66,7 @@ function getAllMessages() {
     const messageListElement = document.getElementById('message-history');
     messageListElement.innerHTML = '';
     messageList.forEach((line) => {
-      messageListElement.appendChild(createListElement(line));
+      messageListElement.appendChild(createListElement(line.text));
     });
   });
 }

@@ -6,15 +6,20 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getAllMessages()">
     <div id="content">
       <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
       <p>This is Jill.</p>
       <a href="/images/jill.jpg"><img src="/images/jill.jpg" width="300"></a>
-      <p>Click here to have a greeting :)</p>
-      <button onclick="getServerStats()">Hello</button>
-      <ul id="greeting-container"></ul>
+      <p>All messages:</p>
+      <ul id="message-history"></ul>
+      <p>Leave a message :)</p>
+      <form action="/data" method="POST">
+        <p>Enter a sentence:</p>
+        <textarea name="text-input">hello</textarea>
+        <br/><br/>
+        <input type="submit" />
+      </form>
     </div>
   </body>
 </html>

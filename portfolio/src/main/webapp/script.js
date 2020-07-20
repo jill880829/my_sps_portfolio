@@ -36,7 +36,6 @@ function getGreetingUsingArrowFunctions() {
 
 // week2-step3 add json
 function getServerStats() {
-  console.log("Jill~~~ <3");
   fetch('/data').then(response => response.json()).then((stats) => {
     // stats is an object, not a string, so we have to
     // reference its fields to create HTML content
@@ -58,4 +57,16 @@ function createListElement(text) {
   const liElement = document.createElement('li');
   liElement.innerText = text;
   return liElement;
+}
+
+//week2-step4
+function getAllMessages() {
+  fetch('/data').then(response => response.json()).then((messageList) => {
+    console.log(messageList)
+    const messageListElement = document.getElementById('message-history');
+    messageListElement.innerHTML = '';
+    messageList.forEach((line) => {
+      messageListElement.appendChild(createListElement(line.text));
+    });
+  });
 }
